@@ -20,3 +20,6 @@ class Solution {
         return temp;
     }
 }
+
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
