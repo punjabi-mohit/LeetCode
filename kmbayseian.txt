@@ -1,0 +1,100 @@
+from pandas import *
+import os
+import itertools
+x=read_csv('DataSet.csv')
+print(x)
+
+prob1 = x.keys()[-1]
+yn = x[prob1]
+m=yn.unique()
+print (m)
+proby = 0
+probn = 0
+for i in yn:
+    if i == m[1]:
+        proby = proby+1
+    elif i == m[0]:
+        probn=probn+1
+py = proby/(proby+probn)
+pn = probn/(proby+probn)
+# print(proby, probn)
+lst = x.keys()[0:-1]
+
+l30y=0
+l30n=0
+
+cnt = 0
+ansy = 1.0
+ansn = 1.0
+probby = 0
+probbn = 0
+for i in lst:
+    col=x.keys()[cnt]
+    cnt=cnt+1
+    coll=x[col]
+    print("Enter",col )
+    age=input()
+    # print("next")
+    # print(ansy)
+    for j in range(len(lst)):
+        probby = 0
+        probbn = 0
+        # print("idk")
+        for k,l in zip(coll,yn):
+            # print("hi")
+            if age==k and l==m[1]:
+                probby=probby+1
+                # print("hi")
+                # print(probby)
+            elif age==k and l==m[0]:
+                probbn=probbn+1
+    #             print(probbn)
+    # print(probby/proby)
+    # print(ansy)
+    if probby==0 or probbn==0:
+    	ansy=ansy*(probby+1/proby+1)
+    	ansn=ansn*(probbn+1/probn+1)
+    else:
+    	ansy=ansy*(probby/proby)
+    	ansn=ansn*(probbn/probn)
+ansy=ansy*py
+# print(ansy)
+ansn=ansn*pn
+print(ansy,ansn)
+
+if ansy>ansn:
+    print(m[1])
+else:
+    print(m[0])
+
+# for i,j in age11,yn:
+#     if i=="<=30":
+#         if j=="yes":
+#             probby=probby+1
+#         elif j=="no":
+#             probbn=probbn+1
+#     elif    i=="31-40":
+#         if j=="yes":
+#             probby=probby+1
+#         elif j=="no":
+#             probbn=probbn+1
+#     elif i==">40":
+#         if j=="yes":
+#             probby=probby+1
+#         elif j=="no":
+#             probbn=probbn+1
+#
+# print(probbn,probby)
+# # for i in lst:
+# #     age=x[i]
+# #
+# #     var_dis=x[i].unique()
+# #     for j,k in age,yn:
+# #         if j==var_dis[0] and k=="yes":
+# #             l30y=l30y+1
+# #
+# #         elif j==var_dis[0] and k=="no":
+# #             l30n=l30n+1
+#
+# print(l30y,l30n)
+# 32 medium yes fair
