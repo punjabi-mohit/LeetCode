@@ -1,3 +1,4 @@
+// Classified as two pointer on Leetcode but can be solved easily using string methods in java
 class Solution {
     public int strStr(String haystack, String needle) {
         if(!haystack.contains(needle)){
